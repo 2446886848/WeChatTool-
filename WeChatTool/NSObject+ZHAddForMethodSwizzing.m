@@ -91,7 +91,7 @@ void ZHAssert(BOOL value, NSString *message)
     Method swizzledMethod = class_getInstanceMethod(swizzedClass, swizzledSelector);
     
     if (!swizzledMethod) {
-        NSLog(@"RedEnvelop:selector %@ in %@ is not found", NSStringFromSelector(swizzledSelector), swizzedClass);
+        NSLog(@"selector %@ in %@ is not found", NSStringFromSelector(swizzledSelector), swizzedClass);
         return NO;
     }
     
@@ -124,7 +124,7 @@ void ZHAssert(BOOL value, NSString *message)
         NSString *swizzedTypeEcodeing = [NSString stringWithCString:method_getTypeEncoding(swizzledMethod) encoding:NSUTF8StringEncoding];
         
         if (![oriTypeEcodeing isEqualToString:swizzedTypeEcodeing]) {
-            NSLog(@"RedEnvelop:Trying to swizze methods with different typeEncodeing");
+            NSLog(@"Trying to swizze methods with different typeEncodeingoriTypeEcodeing = %@, swizzedTypeEcodeing = %@", oriTypeEcodeing, swizzedTypeEcodeing);
             return NO;
         }
         
@@ -136,7 +136,7 @@ void ZHAssert(BOOL value, NSString *message)
                         method_getTypeEncoding(swizzledMethod));
         
         if (!didAddSwizzedMethod) {
-            NSLog(@"RedEnvelop:class:%@ already has method:%@", class, NSStringFromSelector(method_getName(swizzledMethod)));
+            NSLog(@"class:%@ already has method:%@", class, NSStringFromSelector(method_getName(swizzledMethod)));
             return NO;
         }
         

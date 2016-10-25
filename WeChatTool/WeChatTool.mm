@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RedEnvelop.h"
 #import "HeathStep.h"
+#import "MessageRevoke.h"
 
 __attribute__((constructor)) static void entry()
 {
     [LibSetup setup];
     [RedEnvelop setupAutoEnvelop];
     [HeathStep setupHealthStep];
+    [MessageRevoke setupMessage];
 }

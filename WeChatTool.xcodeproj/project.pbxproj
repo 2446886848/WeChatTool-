@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E83B6FF41DBE0DD100BB0232 /* MessageRevoke.h in Headers */ = {isa = PBXBuildFile; fileRef = E83B6FF21DBE0DD100BB0232 /* MessageRevoke.h */; };
+		E83B6FF51DBE0DD100BB0232 /* MessageRevoke.m in Sources */ = {isa = PBXBuildFile; fileRef = E83B6FF31DBE0DD100BB0232 /* MessageRevoke.m */; };
 		E863A8581DB09E77000F69F5 /* HeathStep.h in Headers */ = {isa = PBXBuildFile; fileRef = E863A8561DB09E77000F69F5 /* HeathStep.h */; };
 		E863A8591DB09E77000F69F5 /* HeathStep.m in Sources */ = {isa = PBXBuildFile; fileRef = E863A8571DB09E77000F69F5 /* HeathStep.m */; };
 		E863A85B1DB0A30E000F69F5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863A85A1DB0A30E000F69F5 /* HealthKit.framework */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E83B6FF21DBE0DD100BB0232 /* MessageRevoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageRevoke.h; sourceTree = "<group>"; };
+		E83B6FF31DBE0DD100BB0232 /* MessageRevoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageRevoke.m; sourceTree = "<group>"; };
 		E863A8561DB09E77000F69F5 /* HeathStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeathStep.h; sourceTree = "<group>"; };
 		E863A8571DB09E77000F69F5 /* HeathStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeathStep.m; sourceTree = "<group>"; };
 		E863A85A1DB0A30E000F69F5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -95,6 +99,8 @@
 				E863A8651DB0AD1E000F69F5 /* GlobalConfig.m */,
 				E863A8601DB0A68A000F69F5 /* LibSetup.h */,
 				E863A8611DB0A68A000F69F5 /* LibSetup.m */,
+				E83B6FF21DBE0DD100BB0232 /* MessageRevoke.h */,
+				E83B6FF31DBE0DD100BB0232 /* MessageRevoke.m */,
 				E863A8561DB09E77000F69F5 /* HeathStep.h */,
 				E863A8571DB09E77000F69F5 /* HeathStep.m */,
 				E8B9EB6D1DA9E0A200A0AEED /* RedEnvelop.h */,
@@ -161,6 +167,7 @@
 				E863A8581DB09E77000F69F5 /* HeathStep.h in Headers */,
 				E8B9EB731DA9E4C000A0AEED /* NSObject+ZHAddForMethodSwizzing.h in Headers */,
 				E863A8661DB0AD1E000F69F5 /* GlobalConfig.h in Headers */,
+				E83B6FF41DBE0DD100BB0232 /* MessageRevoke.h in Headers */,
 				E8B9EB6F1DA9E0A200A0AEED /* RedEnvelop.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +249,7 @@
 				E8B9EB701DA9E0A200A0AEED /* RedEnvelop.m in Sources */,
 				E8B9EB741DA9E4C000A0AEED /* NSObject+ZHAddForMethodSwizzing.m in Sources */,
 				E863A8671DB0AD1E000F69F5 /* GlobalConfig.m in Sources */,
+				E83B6FF51DBE0DD100BB0232 /* MessageRevoke.m in Sources */,
 				E863A8631DB0A68A000F69F5 /* LibSetup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
