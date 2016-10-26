@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E880AA3C1D9D0F520079FE34"
+               BlueprintIdentifier = "E8182E571DC04A22007B7F26"
                BuildableName = "libWeChatTool.dylib"
                BlueprintName = "WeChatTool"
                ReferencedContainer = "container:WeChatTool.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E880AA3C1D9D0F520079FE34"
+            BlueprintIdentifier = "E8182E571DC04A22007B7F26"
             BuildableName = "libWeChatTool.dylib"
             BlueprintName = "WeChatTool"
             ReferencedContainer = "container:WeChatTool.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E880AA3C1D9D0F520079FE34"
+            BlueprintIdentifier = "E8182E571DC04A22007B7F26"
             BuildableName = "libWeChatTool.dylib"
             BlueprintName = "WeChatTool"
             ReferencedContainer = "container:WeChatTool.xcodeproj">
