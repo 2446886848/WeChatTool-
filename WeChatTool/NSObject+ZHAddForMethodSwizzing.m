@@ -29,7 +29,6 @@ void ZHAssert(BOOL value, NSString *message)
     ZHAssert(originClass != nil, [NSString stringWithFormat:@"originClass %@ doesn't exist!", className]);
     ZHAssert(destClass != nil, [NSString stringWithFormat:@"destClass %@ doesn't exist!", [classPrefix stringByAppendingString:className]]);
     
-    NSLog(@"className = %@ begin", className);
     unsigned int outCount = 0;
     Method *methods = class_copyMethodList(destClass, &outCount);
     for (int i = 0; i < outCount; i++) {
@@ -39,12 +38,13 @@ void ZHAssert(BOOL value, NSString *message)
             NSString *destMethodName = methodName;
             
             BOOL hookResult = [NSObject zh_swizzleClass:originClass original:NSSelectorFromString(originMethodName) withSwizzedClass:destClass swizzledSelector:NSSelectorFromString(destMethodName)];
-            NSLog(@"originMethodName = %@ destMethodName = %@ hookResult = %@", originMethodName, destMethodName, @(hookResult));
+            if (!hookResult) {
+                NSLog(@"originMethodName = %@ destMethodName = %@ hookResult = %@", originMethodName, destMethodName, @(hookResult));
+            }
 
             ret &= hookResult;
         }
     }
-    NSLog(@"className = %@ end", className);
     return ret;
 }
 

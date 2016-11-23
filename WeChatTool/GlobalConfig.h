@@ -15,6 +15,29 @@ typedef enum : NSUInteger {
     HeathStepModeSet,
 } HeathStepMode;
 
+typedef NS_ENUM(NSUInteger, RandomDice) {
+    RandomDiceNone = 0,
+    RandomDiceOne,
+    RandomDiceTwo,
+    RandomDiceThree,
+    RandomDiceFour,
+    RandomDiceFive,
+    RandomDiceSix,
+};
+
+typedef NS_ENUM(NSUInteger, RandomJkp) {
+    RandomJkpNone = 0,
+    RandomJkpJianDao,
+    RandomJkpShiTou,
+    RandomJkpBu,
+};
+
+typedef NS_ENUM(NSUInteger, RandomType) {
+    RandomTypeNone,
+    RandomTypeDice,
+    RandomTypeJkp,
+};
+
 @interface GlobalConfig : NSObject
 
 + (instancetype)config;
@@ -30,5 +53,13 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat stepNumber;
 @property (nonatomic, copy) NSString *stepModeKey;
 @property (nonatomic, copy) NSString *stepNumberKey;
+
+//骰子
+@property (nonatomic, assign) RandomType randomType;
+@property (nonatomic, assign) RandomDice randomDice;
+@property (nonatomic, assign) RandomJkp randomJkp;
+
+//取消本次消息的发送 仅仅生效一次
+@property (nonatomic, assign) BOOL cancleMessageSend;
 
 @end

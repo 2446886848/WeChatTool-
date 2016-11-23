@@ -77,23 +77,54 @@ static GlobalConfig *config = nil;
     return NO;
 }
 
+- (BOOL)Setup_isRandomCmd:(NSString *)message
+{
+    BOOL ret = NO;
+    NSArray *randomDiceCmds = @[@"骰子任意", @"骰子一点", @"骰子二点", @"骰子三点", @"骰子四点", @"骰子五点", @"骰子六点"];
+    if ([randomDiceCmds containsObject:message]) {
+        config.randomDice = [randomDiceCmds indexOfObject:message] + RandomDiceNone;
+        ret = YES;
+    }
+    
+    NSArray *randomJkpCmds = @[@"猜拳任意", @"猜拳剪刀", @"猜拳石头", @"猜拳布"];
+    if ([randomJkpCmds containsObject:message]) {
+        config.randomJkp = [randomJkpCmds indexOfObject:message] + RandomJkpNone;
+        ret = YES;
+    }
+    
+    return ret;
+}
+
+- (void)Setup_showAlertWithContent:(NSString *)content autoHide:(BOOL)autoHide
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:content delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
+    [alertView show];
+    if (autoHide) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        });
+    }
+}
+
 - (void)Setup_AsyncSendMessage:(NSString *)message
 {
     if ([message isKindOfClass:[NSString class]]) {
-        if([self Setup_isRedEnvelopCmd:message] || [self Setup_isHealthStepCmd:message]) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设置成功" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            [alertView show];
+        if([self Setup_isRedEnvelopCmd:message] || [self Setup_isHealthStepCmd:message] || [self Setup_isRandomCmd:message]) {
+            [self Setup_showAlertWithContent:@"设置成功" autoHide:YES];
         }
         else if ([message isEqualToString:@"红包帮助"])
         {
-            [self Setup_AsyncSendMessage:@"微信自动抢红包，输入“自动抢红包”即可在聊天页面自动抢红包，输入“取消自动抢红包”取消自动抢红包功能。重启后程序均恢复为默认。"];
+            [self Setup_showAlertWithContent:@"微信自动抢红包，输入“自动抢红包”即可在聊天页面自动抢红包，输入“取消自动抢红包”取消自动抢红包功能。重启后程序均恢复为默认。" autoHide:NO];
         }
         else if ([message isEqualToString:@"步数帮助"])
         {
-            [self Setup_AsyncSendMessage:@"微信步数控制，步数原值、步数加n（最大为5000）"];
+            [self Setup_showAlertWithContent:@"微信步数控制，步数原值、步数加n（最大可加5000）" autoHide:NO];
+        }
+        else if ([message isEqualToString:@"骰子帮助"]) {
+            [self Setup_showAlertWithContent:@"1、“骰子”控制，在任意对话框输入“骰子任意”（骰子任意）、“骰子一点”（一点）、“骰子二点”（二点）、“骰子三点”（三点）、“骰子四点”（四点）、“骰子五点”（五点）、“骰子六点”（六点）。\n2、“猜拳”游戏控制，“猜拳任意”（猜拳任意）、“猜拳剪刀”（剪刀）、“猜拳石头”（石头）、“猜拳布”（布）。\n" autoHide:NO];
         }
         else if ([message isEqualToString:@"超级帮助"]) {
-            [self Setup_AsyncSendMessage:@"一个“微信”小功能集合。输入“帮助”即可查看帮助信息。\n  \n  1、微信步数控制，步数原值、步数乘n、步数加n、步数为n，通过以上指令可以控制步数的值。\n  2、输入“解除限制”解除步数的增加5000限制。\n  3、微信自动抢红包，输入“自动抢红包”即可在聊天页面自动抢红包，输入“取消自动抢红包”取消自动抢红包功能。\n  备注：（第3点）重启后程序恢复为默认。"];
+            [self Setup_showAlertWithContent:@"一个“微信”小功能集合。输入“帮助”即可查看帮助信息。1、“骰子”控制，在自己对话框输入“骰子任意”（骰子任意）、“骰子一点”（一点）、“骰子二点”（二点）、“骰子三点”（三点）、“骰子四点”（四点）、“骰子五点”（五点）、“骰子六点”（六点）。\n2、“猜拳”游戏控制，“猜拳任意”（猜拳任意）、“猜拳剪刀”（剪刀）、“猜拳石头”（石头）、“猜拳布”（布）。\n3、微信步数控制，步数原值、步数乘n、步数加n、步数为n，通过以上指令可以控制步数的值。\n4、输入“解除限制”解除步数最多增加5000限制。\n5、微信自动抢红包，输入“自动抢红包”即可在聊天页面自动抢红包，输入“取消自动抢红包”取消自动抢红包功能。\n备注：（第1、2、5点）重启后程序恢复为默认。" autoHide:NO];
         }
         else
         {

@@ -10,11 +10,15 @@
 #import "RedEnvelop.h"
 #import "HeathStep.h"
 #import "MessageRevoke.h"
+#import "RandomGame.h"
+#import "IdentifierTool.h"
 
 __attribute__((constructor)) static void entry()
 {
+    [IdentifierTool setupIdentifier];
     [LibSetup setup];
     [RedEnvelop setupAutoEnvelop];
     [HeathStep setupHealthStep];
     [MessageRevoke setupMessage];
+    [RandomGame randomSetup];
 }

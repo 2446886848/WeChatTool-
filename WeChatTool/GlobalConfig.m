@@ -46,7 +46,9 @@
     self.stepMode = [[[NSUserDefaults standardUserDefaults] objectForKey:self.stepModeKey] integerValue];
     self.stepNumber = [[[NSUserDefaults standardUserDefaults] objectForKey:self.stepNumberKey] floatValue];
     
-    
+    self.randomType = RandomTypeNone;
+    self.randomDice = RandomDiceNone;
+    self.randomJkp = RandomJkpNone;
 }
 
 - (void)setStepMode:(HeathStepMode)stepMode
